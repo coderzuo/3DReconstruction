@@ -88,8 +88,10 @@ focal_length_exif = exif_data['FocalLength']
 #Get focal length in decimal form
 focal_length = focal_length_exif[0]/focal_length_exif[1]
 
+#Save focal length
 np.save("./camera_params/FocalLength", focal_length)
 
+#Calculate projection error. 
 mean_error = 0
 for i in range(len(obj_points)):
 	img_points2, _ = cv2.projectPoints(obj_points[i],rvecs[i],tvecs[i], K, dist)
